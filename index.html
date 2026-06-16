@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amaan Nehru — Product & Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+:root {
+  --blue: #2B2BF5;
+  --blue-dark: #1F1FD4;
+  --blue-muted: rgba(43,43,245,0.08);
+  --blue-muted2: rgba(43,43,245,0.15);
+  --white: #FFFFFF;
+  --off-white: #F7F7F7;
+  --gold: #C9A84C;
+  --rule: rgba(43,43,245,0.18);
+  --rule-white: rgba(255,255,255,0.25);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --text: rgba(43,43,245,0.85);
+  --text-3: rgba(43,43,245,0.6);
+  --nav-h: 56px;
+}
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(43,43,245,0.75);
+  background: var(--white);
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; border: none; background: none; cursor: pointer; }
+#progress-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 2px; background: var(--blue);
+  width: 0%; pointer-events: none;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(16px, 4vw, 40px);
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  opacity: 0.95;
+  transition: opacity 0.15s;
+}
+.nav-links a:hover { opacity: 0.5; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-social { display: flex; gap: 16px; align-items: center; }
+.nav-social a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  padding-left: 16px;
+  border-left: 1px solid var(--rule);
+}
+.nav-social a:first-child { border-left: none; padding-left: 0; }
+.nav-cta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--blue);
+  color: var(--white);
+  padding: 8px 20px;
+  border-radius: 0;
+}
+.container { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); min-width: 0; }
+.section { padding: clamp(48px, 6vw, 80px) 0; }
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--rule); }
+.section-title {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: rgba(43,43,245,0.6);
+  line-height: 1.8;
+  max-width: 620px;
+}
+#hero { min-height: 100vh; padding-top: var(--nav-h); position: relative; overflow: hidden; background: var(--white); }
+.hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1320px; margin: 0 auto; padding: 80px clamp(20px, 5vw, 48px) 40px; }
+.hero-rule { height: 1px; background: var(--rule); margin-bottom: 24px; }
+.hero-watermark {
+  position: absolute; top: 8%; left: -2%;
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(3rem, 11vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: rgba(43,43,245,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.hero-title {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  color: var(--blue);
+  margin-bottom: 24px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.hero-tagline {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 1.1;
+  max-width: min(80%, 100%);
+  position: relative;
+  margin-bottom: 24px;
+  overflow-wrap: anywhere;
+}
+.hero-oval-target { position: relative; display: inline-block; color: var(--blue); }
+.hero-oval-target svg { position: absolute; top: -12%; left: -8%; width: calc(100% + 18px); height: calc(100% + 24px); pointer-events: none; color: var(--blue); overflow: visible; }
+.hero-line { height: 1px; background: var(--rule); margin: 0 0 32px; }
+.hero-wins { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-bottom: 0; border-bottom: 1px solid var(--rule); }
+.hero-win { padding: 28px 24px; border-right: 1px solid var(--rule); min-width: 0; }
+.hero-win:last-child { border-right: none; }
+.hero-top-row { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 28px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); flex-wrap: wrap; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 6px 14px;
+  background: var(--blue-muted); color: var(--blue);
+}
+.hero-location { opacity: 0.85; }
+.hero-eyebrow {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(43,43,245,0.6);
+  margin-bottom: 10px;
+}
+.hero-win-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(43,43,245,0.5);
+  margin-bottom: 12px;
+}
+.hero-win-number {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.hero-win-desc {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: rgba(43,43,245,0.75);
+  line-height: 1.65;
+}
+.hero-numbered-row { display: flex; gap: 0; margin-bottom: 32px; border-top: 1px solid var(--rule); }
+.hero-numbered-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 0; border-right: 1px solid var(--rule); }
+.hero-numbered-item:last-child { border-right: none; }
+.hero-number { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.hero-number-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(43,43,245,0.7); }
+.hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+.think-phase-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.think-phases { position: relative; z-index: 1; min-width: 0; }
+.btn-primary { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--blue); color: var(--white); padding: 8px 20px; border-radius: 0; }
+.btn-primary:hover { background: var(--blue-dark); }
+.btn-secondary { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: transparent; border: 1px solid var(--blue); padding: 8px 20px; border-radius: 0; }
+.btn-secondary:hover { background: var(--blue-muted); }
+.marquee-section { padding: 20px 0; background: var(--blue); overflow: hidden; border-top: 1px solid var(--rule-white); border-bottom: 1px solid var(--rule-white); }
+.marquee-track { display: flex; align-items: center; gap: 0; width: max-content; animation: marqueeScroll 40s linear infinite; }
+.marquee-section:hover .marquee-track { animation-play-state: paused; }
+.marquee-item { display: flex; align-items: center; gap: 20px; padding: 0 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); white-space: nowrap; }
+.dot { width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; }
+@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.metrics-band { background: var(--blue); width: 100%; overflow: hidden; }
+.metrics-band .container { max-width: none; padding: 0; }
+.metrics-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 0; }
+.metric-cell { padding: 48px 32px; border-right: 1px solid var(--rule-white); }
+.metric-cell:last-child { border-right: none; }
+.metric-num { font-family: 'Barlow', sans-serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 900; letter-spacing: -0.02em; color: var(--white); line-height: 1; }
+.metric-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.65); margin-top: 10px; }
+.metric-context { font-family: 'Inter', system-ui, sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-top: 8px; }
+.project-list { margin-top: 56px; display: flex; flex-direction: column; overflow: hidden; }
+.project-row { display: grid; grid-template-columns: minmax(72px, 15%) minmax(0, 65%) minmax(120px, 20%); gap: 24px; padding: 28px 0; border-top: 1px solid var(--rule); align-items: center; transition: background 0.2s; min-width: 0; }
+.project-row:hover { background: rgba(43,43,245,0.06); }
+.project-row.placeholder { opacity: 0.4; cursor: not-allowed; }
+.project-row.placeholder:hover { background: transparent; }
+.project-number { font-family: 'Barlow', sans-serif; font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 900; color: rgba(43,43,245,0.12); line-height: 1; overflow: hidden; }
+.project-summary { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.project-title { font-family: 'Barlow', sans-serif; font-size: clamp(1.4rem, 3vw, 2.5rem); font-weight: 800; color: var(--blue); line-height: 1.02; overflow-wrap: anywhere; }
+.project-impact { font-family: 'Inter', system-ui, sans-serif; font-size: 0.9rem; color: rgba(43,43,245,0.6); line-height: 1.7; overflow-wrap: anywhere; }
+.project-side { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 16px; min-width: 0; flex-shrink: 0; }
+.project-side-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(43,43,245,0.5); }
+.project-arrow-btn { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; background: var(--blue); color: var(--white); text-decoration: none; transition: background 0.2s; }
+.project-row:hover .project-arrow-btn { background: var(--blue-dark); }
+#thinking { background: var(--white); color: var(--text); position: relative; overflow: hidden; }
+.think-watermark {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  padding-left: clamp(20px, 5vw, 48px);
+  font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(3rem, 10vw, 6rem);
+  letter-spacing: -0.02em; line-height: 0.88; color: rgba(43,43,245,0.03);
+}
+.think-watermark span:nth-child(2) { margin-left: 8%; }
+.think-watermark span:nth-child(3) { margin-left: 16%; }
+.think-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; margin-top: 56px; align-items: stretch; position: relative; z-index: 1; }
+#thinking .section-label { color: var(--blue); }
+#thinking .section-label::before { background: var(--rule); }
+#thinking .section-title { color: var(--blue); }
+#thinking .section-sub { color: var(--text-3); }
+.think-phase { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--rule); position: relative; z-index: 1; min-width: 0; }
+.think-phase:last-child { border-bottom: none; }
+.think-phase-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(43,43,245,0.35); width: 32px; flex-shrink: 0; }
+.think-phase-body { flex: 1; min-width: 0; }
+.think-phase-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.think-phase-title { font-family: 'Barlow', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--blue); line-height: 1.1; margin-bottom: 10px; overflow-wrap: anywhere; }
+.think-phase-desc { font-family: 'Inter', system-ui, sans-serif; font-size: 0.88rem; color: rgba(43,43,245,0.72); line-height: 1.7; overflow-wrap: anywhere; }
+.think-tool { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--blue); border: 1px solid var(--rule); padding: 5px 10px; white-space: nowrap; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.project-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); border: 1px solid var(--blue); padding: 6px 10px; white-space: nowrap; }
+.contact-oval-target { position: relative; display: inline-block; color: var(--blue); }
+.contact-oval-target svg { position: absolute; top: -14%; left: -10%; width: calc(100% + 24px); height: calc(100% + 20px); pointer-events: none; color: var(--blue); overflow: visible; }
+.section-indicator-inner { display: flex; align-items: center; }
+.section-title { overflow-wrap: anywhere; }
+nav { min-width: 0; }
+.nav-right { flex-shrink: 0; }
+.nav-links { flex-wrap: wrap; }
+.think-venn { position: relative; background: var(--off-white); border: 1px solid var(--rule); border-radius: 0; padding: 32px; color: var(--blue); min-width: 0; overflow: hidden; }
+.venn-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(43,43,245,0.6); margin-bottom: 24px; }
+.venn-svg-wrap { display: flex; justify-content: center; margin-bottom: 24px; width: 100%; max-width: 100%; overflow: hidden; }
+.venn-svg-wrap svg { width: 100%; max-width: 420px; height: auto; overflow: hidden; }
+.venn-intersections { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+.venn-int { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; background: var(--white); border: 1px solid var(--rule); min-width: 0; }
+.venn-int-dot { width: 8px; height: 8px; background: var(--gold); flex-shrink: 0; margin-top: 4px; }
+.venn-int div { font-family: 'Inter', system-ui, sans-serif; color: rgba(43,43,245,0.72); font-size: 0.78rem; line-height: 1.5; overflow-wrap: anywhere; }
+.venn-int strong { color: var(--blue); font-weight: 600; }
+#experience { background: var(--blue); color: var(--white); }
+#experience .section-label { color: rgba(255,255,255,0.6); }
+#experience .section-label::before { background: var(--rule-white); }
+#experience .section-title { color: var(--white); }
+#experience .section-sub { color: rgba(255,255,255,0.65); }
+.exp-timeline { margin-top: 56px; display: flex; flex-direction: column; gap: 0; }
+.exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--rule-white); }
+.exp-item:last-child { border-bottom: none; }
+.exp-meta { padding-right: 32px; }
+.exp-company { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 10px; }
+.exp-role { font-family: 'Barlow', sans-serif; font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
+.exp-duration { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+.exp-location { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+.exp-content { padding-left: 32px; }
+.exp-problem { background: rgba(255,255,255,0.08); padding: 14px 18px; color: rgba(255,255,255,0.85); font-style: italic; font-size: 0.9rem; line-height: 1.6; margin-bottom: 18px; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.exp-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.65; }
+.exp-bullets li::before { content: ''; width: 5px; height: 5px; background: var(--gold); margin-top: 8px; flex-shrink: 0; }
+.exp-impact-tag { display: inline-block; margin-top: 14px; padding: 4px 10px; background: var(--gold); color: var(--blue); font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+#skills { background: var(--off-white); }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 56px; }
+.skill-card { background: var(--white); border: 1px solid var(--rule); border-radius: 0; padding: 28px; transition: border-color 0.2s; }
+.skill-card:hover { border-color: var(--blue); }
+.skill-cat { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+.skill-item { font-family: 'Inter', system-ui, sans-serif; font-size: 0.85rem; color: rgba(43,43,245,0.7); display: flex; align-items: flex-start; gap: 8px; }
+.skill-item::before { content: '→'; color: rgba(43,43,245,0.3); font-size: 0.85rem; margin-top: 4px; }
+#education { background: var(--white); padding-bottom: 60px; }
+.edu-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+.edu-card { background: none; border: none; border-top: 1px solid var(--rule); border-radius: 0; padding: 28px 0; }
+.edu-degree { font-family: 'Barlow', sans-serif; font-size: 1.2rem; font-weight: 800; line-height: 1.2; color: var(--blue); margin-bottom: 10px; }
+.edu-inst { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(43,43,245,0.6); margin-bottom: 8px; }
+.edu-dur { font-family: 'Inter', system-ui, sans-serif; font-size: 0.78rem; color: rgba(43,43,245,0.4); }
+#education { background: var(--white); padding-bottom: 60px; }
+#contact { background: var(--white); padding-top: 60px; }
+.contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 56px; align-items: stretch; }
+.contact-info { display: flex; flex-direction: column; justify-content: space-between; }
+.contact-heading { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(3.5rem, 7vw, 6.5rem); line-height: 0.9; letter-spacing: -0.02em; color: var(--blue); margin-bottom: 24px; position: relative; overflow-wrap: anywhere; }
+.contact-link { display: flex; align-items: center; gap: 12px; padding: 22px 0; border-top: 1px solid var(--rule); min-width: 0; }
+.contact-link > div { min-width: 0; overflow: hidden; }
+.contact-link-val { overflow-wrap: anywhere; word-break: break-word; }
+.contact-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 0.95rem; color: rgba(43,43,245,0.6); line-height: 1.7; margin-bottom: 32px; max-width: 620px; }
+.contact-links { display: flex; flex-direction: column; margin-top: 8px; }
+.contact-link:hover { background: var(--blue-muted); }
+.contact-link-label { font-family: 'Inter', system-ui, sans-serif; font-size: 0.7rem; color: rgba(43,43,245,0.4); text-transform: uppercase; display: block; margin-bottom: 2px; }
+.contact-link-val { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--blue); text-transform: uppercase; }
+.contact-form { background: var(--off-white); border: 1px solid var(--rule); border-radius: 0; padding: 40px 32px; min-width: 0; overflow: hidden; }
+.form-row label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(43,43,245,0.6); margin-bottom: 8px; }
+.form-row input, .form-row textarea { width: 100%; background: var(--white); border: 1px solid var(--rule); border-radius: 0; padding: 12px 16px; font-family: 'Inter', system-ui, sans-serif; font-size: 0.9rem; color: var(--blue); outline: none; transition: border-color 0.2s; resize: none; }
+.form-row input::placeholder, .form-row textarea::placeholder { color: rgba(43,43,245,0.3); }
+.form-row input:focus, .form-row textarea:focus { border-color: var(--blue); }
+.form-row textarea { height: 120px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.btn-submit { width: 100%; padding: 14px 24px; background: var(--blue); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; border-radius: 0; display: inline-flex; align-items: center; justify-content: center; gap: 12px; transition: background 0.2s; }
+.btn-submit:hover { background: var(--blue-dark); }
+.form-note { font-family: 'Inter', system-ui, sans-serif; font-size: 0.7rem; color: rgba(43,43,245,0.35); text-align: center; margin-top: 12px; line-height: 1.5; }
+.form-note a { color: var(--blue); }
+.form-success { display: none; text-align: center; padding: 24px; color: rgba(43,43,245,0.7); }
+.form-success-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 1.4rem; color: var(--blue); }
+.contact-icon-badge { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1.5px solid var(--blue); color: var(--blue); font-family: 'Barlow Condensed', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.02em; flex-shrink: 0; border-radius: 2px; background: transparent; transition: background 0.2s, color 0.2s; }
+.contact-link:hover .contact-icon-badge { background: var(--blue); color: var(--white); }
+footer { background: var(--blue); border-top: 1px solid var(--rule-white); padding: 32px clamp(20px, 5vw, 64px); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+.footer-links a:hover { color: rgba(255,255,255,0.9); }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out); }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.section-indicator { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 800; pointer-events: none; background: var(--blue); border: 1px solid rgba(255,255,255,0.25); border-radius: 0; padding: 10px 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); white-space: nowrap; opacity: 0; transition: opacity 0.3s, transform 0.3s var(--ease-out); }
+.section-indicator.visible { opacity: 1; }
+.section-indicator-dot { width: 6px; height: 6px; background: var(--gold); margin-right: 8px; }
+@media (hover: hover) { .cursor-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.08s, background 0.2s, opacity 0.2s; opacity: 0; } }
+@media (max-width: 900px) { .hero-inner { padding: 48px clamp(20px, 5vw, 24px); } .hero-top-row { flex-direction: column; align-items: flex-start; } .hero-title { font-size: clamp(3.5rem, 12vw, 7rem); } .hero-tagline { max-width: 100%; font-size: clamp(1.3rem, 4vw, 2rem); } .hero-wins { grid-template-columns: 1fr; } .hero-win { border-right: none; border-bottom: 1px solid var(--rule); } .hero-win:last-child { border-bottom: none; } .hero-numbered-row { flex-wrap: wrap; } .hero-numbered-item { flex: 1 1 45%; border-right: none; border-bottom: 1px solid var(--rule); } .think-grid { grid-template-columns: 1fr; } .think-venn { position: static; } .exp-item { grid-template-columns: 1fr; } .exp-meta { padding-right: 0; } .exp-content { padding-left: 0; } .project-row { grid-template-columns: 1fr; text-align: left; gap: 16px; } .project-number { font-size: clamp(2.5rem, 10vw, 4rem); } .project-side { align-items: flex-start; text-align: left; flex-direction: row; justify-content: space-between; width: 100%; } .metrics-strip { grid-template-columns: 1fr 1fr; } .metric-cell { border-bottom: 1px solid var(--rule-white); } .contact-wrap { grid-template-columns: 1fr; } .edu-row { grid-template-columns: 1fr; } .form-grid { grid-template-columns: 1fr; } .nav-social { gap: 12px; } }
+@media (max-width: 600px) { .nav-links { display: none; } .metrics-strip { grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+<!-- Cursor dot -->
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Reading progress -->
+<div id="progress-bar"></div>
+
+<!-- Section indicator -->
+<div class="section-indicator" id="sectionIndicator">
+  <div class="section-indicator-inner">
+    <div class="section-indicator-dot"></div>
+    <span id="sectionName">Hero</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">AN<span>.</span></a>
+
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#thinking">Thinking</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-social">
+      <a href="https://linkedin.com/in/amaan-nehru" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-watermark" aria-hidden="true">PRODUCT STRATEGY</div>
+    <div class="hero-rule"></div>
+    <div class="hero-top-row">
+      <span class="hero-badge">Open to full-time roles · NYC</span>
+      <span class="hero-location">New York, NY</span>
+    </div>
+    <p class="hero-eyebrow">Hey, I'm</p>
+    <h1 class="hero-title">AMAAN NEHRU.</h1>
+    <p class="hero-tagline">I turn <span class="hero-oval-target">ambiguous<svg viewBox="0 0 260 80" class="hero-oval-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 40 C40 5 95 0 132 10 C170 20 230 50 242 68" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> problems into structured, high-impact decisions.</p>
+    <div class="hero-line"></div>
+    <div class="hero-numbered-row">
+      <div class="hero-numbered-item"><span class="hero-number">#01</span><span class="hero-number-label">AI Strategy</span></div>
+      <div class="hero-numbered-item"><span class="hero-number">#02</span><span class="hero-number-label">Product Thinking</span></div>
+      <div class="hero-numbered-item"><span class="hero-number">#03</span><span class="hero-number-label">GTM Execution</span></div>
+      <div class="hero-numbered-item"><span class="hero-number">#04</span><span class="hero-number-label">Venture & Consulting</span></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <a href="mailto:amaan.nehru@stern.nyu.edu" class="btn-secondary">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack">
+    <!-- Items duplicated for seamless loop -->
+    <div class="marquee-item"><span class="dot"></span>AI Strategy</div>
+    <div class="marquee-item"><span class="dot"></span>Product Thinking</div>
+    <div class="marquee-item"><span class="dot"></span>GTM Execution</div>
+    <div class="marquee-item"><span class="dot"></span>Venture Analysis</div>
+    <div class="marquee-item"><span class="dot"></span>Structured Problem Solving</div>
+    <div class="marquee-item"><span class="dot"></span>Cross-functional Leadership</div>
+    <div class="marquee-item"><span class="dot"></span>Tech × Business × Users</div>
+    <div class="marquee-item"><span class="dot"></span>Hypothesis-Driven Thinking</div>
+    <div class="marquee-item"><span class="dot"></span>AI Strategy</div>
+    <div class="marquee-item"><span class="dot"></span>Product Thinking</div>
+    <div class="marquee-item"><span class="dot"></span>GTM Execution</div>
+    <div class="marquee-item"><span class="dot"></span>Venture Analysis</div>
+    <div class="marquee-item"><span class="dot"></span>Structured Problem Solving</div>
+    <div class="marquee-item"><span class="dot"></span>Cross-functional Leadership</div>
+    <div class="marquee-item"><span class="dot"></span>Tech × Business × Users</div>
+    <div class="marquee-item"><span class="dot"></span>Hypothesis-Driven Thinking</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ METRICS -->
+<div class="metrics-band">
+  <div class="metrics-strip reveal">
+    <div class="metric-cell">
+      <div class="metric-num">22%</div>
+      <div class="metric-label">Reduction in post-production issues</div>
+      <div class="metric-context">Qualcomm · IoT Platform</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">$12M</div>
+      <div class="metric-label">Revenue segment influenced</div>
+      <div class="metric-context">Business Insider · AI Retention</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">2×</div>
+      <div class="metric-label">Response rate improvement</div>
+      <div class="metric-context">Ruffalo Noel Levitz · Engagement</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">4 <span style="font-size:1.1rem">cont.</span></div>
+      <div class="metric-label">Continental coverage</div>
+      <div class="metric-context">IoT tracking · 19,000+ sq mi</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ FEATURED WORK -->
+<section id="work" class="section">
+  <div class="container">
+    <div class="section-label">Featured Work</div>
+    <h2 class="section-title reveal">Problems I've solved.</h2>
+    <p class="section-sub reveal reveal-delay-1">Each project is a structured engagement — not a task. Here's what I've built, diagnosed, and shipped.</p>
+    <div class="project-list reveal reveal-delay-2">
+      <a href="case-study-bi.html" class="project-row reveal">
+        <div class="project-number">01</div>
+        <div class="project-summary">
+          <div class="project-title">AI-Driven Subscriber Retention at Business Insider</div>
+          <div class="project-impact">Diagnosed subscriber churn in the "Rising Professionals" segment of a ~$15M digital subscription business, directly impacted by AI search disruption. Translated research into actionable retention and GTM strategies presented to the Chief Content Officer.</div>
+          <div class="project-tags"><span class="project-tag">Strategy</span><span class="project-tag">AI</span><span class="project-tag">GTM</span></div>
+        </div>
+        <div class="project-side">
+          <div class="project-side-label">BI · Subscriber Retention</div>
+          <div class="project-arrow-btn">→</div>
+        </div>
+      </a>
+      <a href="case-study-efl.html" class="project-row reveal reveal-delay-1">
+        <div class="project-number">02</div>
+        <div class="project-summary">
+          <div class="project-title">AI Startup Evaluation Framework</div>
+          <div class="project-impact">Built a 5-dimension evaluation model for deep-tech AI startups at Endless Frontier Labs, assessing PMF, technical architecture, data readiness, governance, and safety.</div>
+          <div class="project-tags"><span class="project-tag">Venture</span><span class="project-tag">Framework</span></div>
+        </div>
+        <div class="project-side">
+          <div class="project-side-label">EFL · Venture Framework</div>
+          <div class="project-arrow-btn">→</div>
+        </div>
+      </a>
+      <div class="project-row placeholder reveal reveal-delay-2">
+        <div class="project-number">03</div>
+        <div class="project-summary">
+          <div class="project-title">Academic Project</div>
+          <div class="project-impact">Case study in progress. Details to be added soon.</div>
+          <div class="project-tags"><span class="project-tag">Academic</span><span class="project-tag">Case Study</span></div>
+        </div>
+        <div class="project-side">
+          <div class="project-side-label">TBD</div>
+          <div class="project-arrow-btn">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ HOW I THINK -->
+<section id="thinking" class="section">
+  <div class="think-watermark" aria-hidden="true">
+    <span>STRUCTURE</span>
+    <span>FOCUS</span>
+    <span>SCALE</span>
+  </div>
+  <div class="container">
+    <div class="section-label">Mental Operating System</div>
+    <h2 class="section-title reveal">How I think.</h2>
+    <p class="section-sub reveal reveal-delay-1">I don't view Product, Strategy, and GTM as separate departments. I treat them as a continuous execution loop — from chaos to scale.</p>
+
+    <div class="think-grid">
+      <div class="think-phases reveal">
+
+        <div class="think-phase">
+          <div class="think-phase-num">01</div>
+          <div class="think-phase-body">
+            <div class="think-phase-label">Phase 1 · Consultant</div>
+            <div class="think-phase-title">Structuring the Chaos</div>
+            <div class="think-phase-desc">When dropped into ambiguity, I don't wait for perfect data. I use hypothesis-driven problem solving and MECE issue trees to break large business problems into actionable, testable components.</div>
+            <div class="think-phase-tools">
+              <span class="think-tool">MECE Decomposition</span>
+              <span class="think-tool">Hypothesis Trees</span>
+              <span class="think-tool">Stakeholder Mapping</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="think-phase">
+          <div class="think-phase-num">02</div>
+          <div class="think-phase-body">
+            <div class="think-phase-label">Phase 2 · Product Manager</div>
+            <div class="think-phase-title">Ruthless Focus</div>
+            <div class="think-phase-desc">Once the problem is structured, I shift from divergent exploration to convergent execution. I use the Double Diamond to narrow scope and RICE scoring to prioritize the highest-leverage interventions.</div>
+            <div class="think-phase-tools">
+              <span class="think-tool">Double Diamond</span>
+              <span class="think-tool">RICE Scoring</span>
+              <span class="think-tool">User Behavior Analysis</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="think-phase">
+          <div class="think-phase-num">03</div>
+          <div class="think-phase-body">
+            <div class="think-phase-label">Phase 3 · GTM Strategist</div>
+            <div class="think-phase-title">Scaling the Engine</div>
+            <div class="think-phase-desc">A great product fails without distribution. I design with the growth flywheel in mind — ensuring user acquisition, product experience, and retention form a repeatable, self-sustaining loop.</div>
+            <div class="think-phase-tools">
+              <span class="think-tool">Growth Flywheel</span>
+              <span class="think-tool">GTM Sequencing</span>
+              <span class="think-tool">KPI / OKR Design</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="think-venn reveal reveal-delay-2">
+        <div class="venn-title">The Product Strategy Canvas</div>
+        <div class="venn-svg-wrap">
+          <svg viewBox="0 0 420 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="140" cy="120" r="95" fill="rgba(43,43,245,0.03)" stroke="rgba(43,43,245,0.8)" stroke-width="1.5"/>
+            <circle cx="280" cy="120" r="95" fill="rgba(43,43,245,0.02)" stroke="rgba(43,43,245,0.5)" stroke-width="1.5"/>
+            <circle cx="210" cy="245" r="95" fill="rgba(43,43,245,0.01)" stroke="rgba(43,43,245,0.3)" stroke-width="1.5"/>
+            <text x="140" y="120" font-family="Barlow Condensed, sans-serif" font-size="11" font-weight="700" fill="var(--blue)" text-anchor="middle" dominant-baseline="middle">CONSULTING</text>
+            <text x="280" y="120" font-family="Barlow Condensed, sans-serif" font-size="11" font-weight="700" fill="rgba(43,43,245,0.7)" text-anchor="middle" dominant-baseline="middle">PRODUCT</text>
+            <text x="210" y="245" font-family="Barlow Condensed, sans-serif" font-size="11" font-weight="700" fill="#C9A84C" text-anchor="middle" dominant-baseline="middle">GTM</text>
+          </svg>
+        </div>
+
+        <div class="venn-intersections">
+          <div class="venn-int">
+            <div class="venn-int-dot"></div>
+            <div><strong>Consulting × Product:</strong> Hypothesis-driven thinking ensures engineering resources aren't wasted on low-value problems.</div>
+          </div>
+          <div class="venn-int">
+            <div class="venn-int-dot"></div>
+            <div><strong>Product × GTM:</strong> Features are built with distribution in mind — designed to trigger product-led growth from day one.</div>
+          </div>
+          <div class="venn-int">
+            <div class="venn-int-dot"></div>
+            <div><strong>GTM × Consulting:</strong> Market friction is data — not a sales problem. It restructures overall business strategy.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title reveal">Where I've created impact.</h2>
+    <p class="section-sub reveal reveal-delay-1">Focused on decisions made, outcomes delivered, and cross-functional ownership — not job descriptions.</p>
+
+    <div class="exp-timeline">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Business Insider</div>
+          <div class="exp-role">AI Product Manager</div>
+          <div class="exp-duration">Jan 2026 – May 2026</div>
+          <div class="exp-location">Manhattan, NY</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-problem">"Defined end-to-end subscriber growth strategy and mapped AI governance guardrails for digital subscriptions."</div>
+          <ul class="exp-bullets">
+            <li>Conducted primary research with 112 respondents and competitive analysis (NYT, WSJ, Bloomberg, Substack) to understand subscriber pain points; translated findings into tiered conversion funnel designed to increase LTV</li>
+            <li>Analyzed engagement patterns and churn drivers; redesigned retention strategy for "Rising Professionals" segment by identifying friction points in paywall experience</li>
+            <li>Designed AI governance framework establishing human editorial sign-off, reporter byline ownership, and brand credibility checks; structured 90-day phased pilot to balance capacity and risk</li>
+            <li>Defined engagement metrics, habit formation targets, and quality benchmarks for vertical video formats and newsletter verticals; aligned cross-functional teams on success criteria</li>
+            <li>Managed cross-functional workstreams ensuring delivery of subscriber conversion KPIs; iterated based on user feedback to ensure AI-powered products delivered measurable value</li>
+          </ul>
+          <span class="exp-impact-tag">↑ $12M revenue segment influenced</span>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Endless Frontier Labs</div>
+          <div class="exp-role">Project Manager (Deep Tech & AI)</div>
+          <div class="exp-duration">May 2025 – Sept 2025</div>
+          <div class="exp-location">Manhattan, NY</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-problem">"Assessed product viability, technical feasibility, and go-to-market readiness across portfolio startups."</div>
+          <ul class="exp-bullets">
+            <li>Designed 5-dimensional evaluation framework assessing product-market fit, technical feasibility, data readiness, go-to-market maturity, and market traction across five portfolio companies</li>
+            <li>Analyzed market trends and competitive positioning across AI, physical systems, and agentic AI verticals; scoped technical problems into testable hypotheses and validated assumptions</li>
+            <li>Partnered with founders and engineering teams to translate market constraints into 6–12 month outcome-oriented roadmaps, prioritized user stories, and MVP backlogs</li>
+            <li>Defined adoption, usability, and product performance KPIs; conducted dependency analysis to inform feature prioritization and founder positioning against competitive landscape</li>
+          </ul>
+          <span class="exp-impact-tag">↑ 70%+ adoption rate of high-priority guidance</span>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Ruffalo Noel Levitz</div>
+          <div class="exp-role">Comms & Engagement Analyst</div>
+          <div class="exp-duration">Dec 2024 – July 2025</div>
+          <div class="exp-location">Manhattan, NY</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-problem">"Redesigned constituent communication strategies and managed data-driven engagement workflows."</div>
+          <ul class="exp-bullets">
+            <li>Developed and executed data-driven stakeholder engagement strategy using A/B testing and behavioral analytics; doubled response rates and generated $8,000+ through targeted constituent segmentation</li>
+            <li>Created and managed engagement workflows; monitored metrics to optimize communication effectiveness and organizational outcomes</li>
+          </ul>
+          <span class="exp-impact-tag">↑ 2× response rate · $8K generated</span>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Qualcomm</div>
+          <div class="exp-role">Product Engineer — IoT</div>
+          <div class="exp-duration">Aug 2021 – Aug 2024</div>
+          <div class="exp-location">Hyderabad, India</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-problem">"Managed critical customer escalations, commercialized NTN cellular-satellite solutions, and optimized platform reliability."</div>
+          <ul class="exp-bullets">
+            <li>Owned end-to-end resolution of critical customer escalations for CIoT chipset deployments, driving root cause analysis across NAS, mobility management, and connectivity workflows</li>
+            <li>Led product commercialization of cellular-satellite connectivity solution using NB-LTE NTN, coordinating cross-functional efforts to bring IoT communications to remote regions spanning 19,000+ sq mi</li>
+            <li>Defined and delivered geo-tracking and intelligent flight-mode detection capabilities for logistics and cold-chain platforms, improving shipment visibility for vaccine transportation and theft prevention</li>
+            <li>Identified and drove power-optimization initiatives leveraging idle-state enhancements and sleep-mode mechanisms, extending battery life of IoT wearables by 10%</li>
+            <li>Scoped and delivered automated regression testing framework, introducing corner-case validation coverage that reduced post-production customer defects by 22%</li>
+            <li>Defined reliability metrics, performance KPIs, and observability mechanisms for IoT deployments used by Fortune 500 customers to enable proactive device lifecycle management</li>
+            <li>Partnered with customer engineering teams to surface coverage gaps, prioritize corrective action plans, and drive long-term quality improvements across CIoT software releases</li>
+            <li>Built internal knowledge infrastructure including incident playbooks, debugging guides, and technical repositories; mentored junior engineers to accelerate team productivity</li>
+          </ul>
+          <span class="exp-impact-tag">↑ 22% issue reduction · 4 continents</span>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Qualcomm</div>
+          <div class="exp-role">Associate Engineer</div>
+          <div class="exp-duration">Aug 2021 – Aug 2024</div>
+          <div class="exp-location">Hyderabad, India</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-problem">"Delivered low-power capabilities and debugged complex protocol stack issues during initial product lifecycle."</div>
+          <ul class="exp-bullets">
+            <li>Delivered Extended Discontinuous Reception (eDRX) capabilities for LTE-based IoT devices, enabling over 50% greater power savings during idle operation</li>
+            <li>Designed and executed fuzz-testing program for NAS protocol stacks, proactively identifying security vulnerabilities and protocol edge cases to reduce deployment risk</li>
+            <li>Collaborated with global customer engineering teams to troubleshoot and resolve complex issues across eDRX, PSM, location services, and data concurrency</li>
+            <li>Investigated field-reported software defects across Mobility Management and CIoT EPS Optimizations through deep log analysis and cross-functional collaboration</li>
+          </ul>
+          <span class="exp-impact-tag">↑ 50% idle power savings</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title reveal">What I bring.</h2>
+    <p class="section-sub reveal reveal-delay-1">Not a list of buzzwords. Each capability is backed by a project or decision above.</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card reveal">
+        <div class="skill-cat"><div class="skill-cat-icon"></div>Product & Strategy</div>
+        <div class="skill-items">
+          <div class="skill-item">Product Thinking & Problem Structuring</div>
+          <div class="skill-item">GTM Strategy & GTM Sequencing</div>
+          <div class="skill-item">Competitive Analysis & Market Sizing</div>
+          <div class="skill-item">Roadmapping & Prioritization</div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-cat"><div class="skill-cat-icon"></div>AI & Data</div>
+        <div class="skill-items">
+          <div class="skill-item">AI Strategy & Platform Evaluation</div>
+          <div class="skill-item">AI Governance & Guardrails</div>
+          <div class="skill-item">A/B Testing & Behavioral Analytics</div>
+          <div class="skill-item">KPI / OKR & Metric Design</div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-cat"><div class="skill-cat-icon"></div>Technical</div>
+        <div class="skill-items">
+          <div class="skill-item">IoT Systems & low-power (eDRX)</div>
+          <div class="skill-item">Cellular-Satellite Connectivity (NTN)</div>
+          <div class="skill-item">Protocol Fuzz-Testing & Debugging</div>
+          <div class="skill-item">Python & SQL</div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-cat"><div class="skill-cat-icon"></div>Core Strengths</div>
+        <div class="skill-items">
+          <div class="skill-item">Structured Problem Solving</div>
+          <div class="skill-item">Cross-functional Leadership</div>
+          <div class="skill-item">Translating Technical ↔ Business</div>
+          <div class="skill-item">Executive Stakeholder Communication</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ EDUCATION -->
+<section id="education" class="section">
+  <div class="container">
+    <div class="section-label">Education</div>
+    <h2 class="section-title reveal">Academic foundation.</h2>
+
+    <div class="edu-row">
+      <div class="edu-card reveal">
+        <div class="edu-degree">MBA in Technology Management & Innovation</div>
+        <div class="edu-inst">New York University · Stern School of Business</div>
+        <div class="edu-dur">Aug 2024 – May 2026</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-degree">B.Tech in Information Technology</div>
+        <div class="edu-inst">NSIT · Delhi University</div>
+        <div class="edu-dur">Aug 2015 – Jul 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-label">Contact</div>
+
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <h2 class="contact-heading">Let's <span class="contact-oval-target">work together<svg viewBox="0 0 260 80" class="contact-oval-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 40 C40 5 95 0 132 10 C170 20 230 50 242 68" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>.</h2>
+        <p class="contact-sub">I'm currently open to full-time roles in Product Management, Product Strategy, and AI/GTM Strategy. If you're working on a hard problem at the intersection of technology and business, let's talk.</p>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="contact-form">
+          <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <!-- ⚠️ SETUP REQUIRED: Replace YOUR_FORM_ID above with your Formspree form ID.
+                 Sign up at formspree.io → New Form → copy the ID (looks like xabcdefg) -->
+            <div class="form-grid">
+              <div class="form-row">
+                <label>Your Name</label>
+                <input type="text" name="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="form-row">
+                <label>Your Email</label>
+                <input type="email" name="email" placeholder="jane@company.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Subject</label>
+              <input type="text" name="subject" placeholder="Role, collaboration, or inquiry..." required>
+            </div>
+            <div class="form-row">
+              <label>Message</label>
+              <textarea name="message" placeholder="Tell me about the role or what you're working on..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+            <p class="form-note">
+              Powered by <a href="https://formspree.io" target="_blank">Formspree</a>. Your details go directly to Amaan's inbox.
+            </p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">✓</div>
+            <div style="font-weight:600;color:var(--blue);margin-bottom:6px">Message sent.</div>
+            <div style="font-size:0.85rem;color:rgba(43,43,245,0.6)">Amaan will get back to you shortly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER -->
+<footer>
+  <div class="footer-name">Amaan Nehru · 2026</div>
+  <div class="footer-links">
+    <a href="mailto:amaan.nehru@stern.nyu.edu">Email</a>
+    <a href="https://linkedin.com/in/amaan-nehru" target="_blank">LinkedIn</a>
+    <a href="https://github.com" target="_blank">GitHub</a>
+    <a href="#hero">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════ JS -->
+<script>
+/* ── Reading progress ──────────────────────────────────────── */
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = document.body.scrollHeight - window.innerHeight;
+  bar.style.width = (scrolled / total * 100) + '%';
+}, { passive: true });
+
+/* ── Scroll reveal ─────────────────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('revealed');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ── Section indicator ─────────────────────────────────────── */
+const sectionIndicator = document.getElementById('sectionIndicator');
+const sectionNameEl = document.getElementById('sectionName');
+const sections = [
+  { el: document.getElementById('hero'),       name: 'Intro' },
+  { el: document.getElementById('work'),       name: 'Featured Work' },
+  { el: document.getElementById('thinking'),   name: 'How I Think' },
+  { el: document.getElementById('experience'), name: 'Experience' },
+  { el: document.getElementById('skills'),     name: 'Capabilities' },
+  { el: document.getElementById('education'),  name: 'Education' },
+  { el: document.getElementById('contact'),    name: 'Contact' },
+];
+
+let indicatorTimer;
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY + window.innerHeight / 2;
+  let active = sections[0];
+  for (const s of sections) {
+    if (s.el && s.el.offsetTop <= scrollY) active = s;
+  }
+  sectionNameEl.textContent = active.name;
+
+  sectionIndicator.classList.add('visible');
+  clearTimeout(indicatorTimer);
+  indicatorTimer = setTimeout(() => sectionIndicator.classList.remove('visible'), 1800);
+}, { passive: true });
+
+/* ── Custom cursor ─────────────────────────────────────────── */
+const cursor = document.getElementById('cursorDot');
+if (cursor && window.matchMedia('(hover: hover)').matches) {
+  cursor.style.opacity = '1';
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button, .project-row').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+      cursor.style.opacity = '0.4';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursor.style.opacity = '1';
+    });
+  });
+}
+
+/* ── Contact form ──────────────────────────────────────────── */
+const form = document.getElementById('contactForm');
+const successMsg = document.getElementById('formSuccess');
+const submitBtn = document.getElementById('submitBtn');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+      } else {
+        submitBtn.textContent = 'Try again';
+        submitBtn.disabled = false;
+      }
+    } catch {
+      submitBtn.textContent = 'Try again';
+      submitBtn.disabled = false;
+    }
+  });
+}
+
+/* ── Smooth nav link scroll ────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>

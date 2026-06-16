@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Insider Case Study · Amaan Nehru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+:root {
+  --blue: #2B2BF5;
+  --blue-dark: #1F1FD4;
+  --blue-muted: rgba(43,43,245,0.08);
+  --blue-muted2: rgba(43,43,245,0.15);
+  --white: #FFFFFF;
+  --off-white: #F7F7F7;
+  --gold: #C9A84C;
+  --rule: rgba(43,43,245,0.18);
+  --rule-white: rgba(255,255,255,0.25);
+  --section-padding-default: 60px 0;
+  --section-padding-emphasis: 80px 0;
+  --section-padding-climax: 100px 0;
+}
+body { font-family: 'Inter', system-ui, sans-serif; background: var(--white); color: rgba(43,43,245,0.75); line-height: 1.8; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+#progress-bar { position: fixed; top: 0; left: 0; z-index: 1000; height: 2px; width: 0%; background: var(--blue); pointer-events: none; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(16px, 4vw, 40px); background: var(--white); border-bottom: 1px solid var(--rule); }
+.nav-logo { font-family: 'Barlow', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); }
+.nav-logo span { color: var(--blue); }
+.nav-back { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-cta { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 20px; background: var(--blue); color: var(--white); border-radius: 0; }
+.container { max-width: 1060px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+.wide { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+.case-hero { padding-top: 96px; padding-bottom: 70px; background: var(--blue); border-bottom: 1px solid var(--rule-white); }
+.case-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 10px; display: inline-flex; align-items: center; gap: 8px; }
+.case-label::before { content: ''; width: 20px; height: 1px; background: rgba(255,255,255,0.25); display: block; }
+.case-title { font-family: 'Barlow', sans-serif; font-size: clamp(2.5rem, 6vw, 5.5rem); font-weight: 900; line-height: 0.9; color: var(--white); margin-bottom: 12px; }
+.case-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 600px; line-height: 1.85; margin-bottom: 24px; }
+.case-meta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.case-meta-pill { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 14px; }
+.case-meta-pill strong { font-weight: 700; }
+.case-layout { display: grid; grid-template-columns: 220px 1fr; gap: 60px; padding-top: 30px; padding-bottom: 40px; align-items: start; }
+.case-toc { position: sticky; top: 80px; background: var(--white); border-right: 1px solid var(--rule); border-radius: 0; padding: 24px 20px; }
+.toc-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(43,43,245,0.4); margin-bottom: 14px; }
+.toc-links { display: flex; flex-direction: column; gap: 6px; }
+.toc-link { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; color: rgba(43,43,245,0.5); padding: 10px 12px; transition: background 0.15s, color 0.15s; }
+.toc-link:hover { background: var(--blue-muted); color: var(--blue); }
+.toc-link.active { background: var(--blue-muted); color: var(--blue); font-weight: 700; border-left: 2px solid var(--blue); padding-left: 10px; }
+.case-body { min-width: 0; max-width: 850px; }
+.case-section { margin-bottom: 0; }
+.case-section-title { font-family: 'Barlow', sans-serif; font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 800; color: var(--blue); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); max-width: 720px; }
+.case-text { font-family: 'Inter', system-ui, sans-serif; font-size: 0.98rem; color: rgba(43,43,245,0.75); line-height: 1.9; margin-bottom: 12px; max-width: 72ch; }
+.case-quote { background: var(--blue-muted); padding: 24px 28px; font-family: 'Inter', system-ui, sans-serif; font-style: italic; color: rgba(43,43,245,0.75); font-size: 0.98rem; line-height: 1.8; margin: 20px 0; }
+.case-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 10px 0; }
+.case-list li { display: flex; align-items: flex-start; gap: 10px; font-family: 'Inter', system-ui, sans-serif; font-size: 0.95rem; color: rgba(43,43,245,0.7); line-height: 1.85; }
+.case-list li::before { content: '→'; color: var(--blue); font-size: 0.9rem; margin-top: 4px; flex-shrink: 0; }
+.fw-card, .dim-card, .init-card, .ba-card, .impact-cell, .score-matrix, .pipeline, .decision-tree { background: var(--white); border: 1px solid var(--rule); border-radius: 0; }
+.fw-card, .dim-card, .init-card, .ba-card { display: flex; flex-direction: column; gap: 18px; padding: 24px; min-height: 260px; }
+.fw-card:hover, .dim-card:hover { border-color: var(--blue); }
+.fw-card-num, .dim-card .fw-card-num, .research-item-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+.fw-card-title, .dim-title, .init-title, .impact-num, .research-item-title, .analysis-step-title { font-family: 'Barlow', sans-serif; color: rgba(43,43,245,0.95); }
+.fw-card-title, .dim-title, .init-title, .research-item-title, .analysis-step-title { font-size: 1.1rem; line-height: 1.35; }
+.fw-card-desc, .dim-desc, .init-desc, .case-text, .analysis-step-text, .research-item-desc, .recommendation-desc, .reflection-item-desc { color: rgba(43,43,245,0.75); line-height: 1.8; }
+.fw-card-desc, .dim-desc, .init-desc, .analysis-step-text, .research-item-desc, .recommendation-desc, .reflection-item-desc { font-size: 0.95rem; }
+.analysis-step {
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: grid;
+  gap: 14px;
+}
+.analysis-step-header, .research-item-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.analysis-step-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+.research-item-num {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+.analysis-step-title {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  margin-bottom: 0;
+}
+.research-item-title {
+  margin-bottom: 0;
+}
+.analysis-step-text {
+  margin-bottom: 0;
+  max-width: 72ch;
+}
+.analysis-step-callout {
+  border-left: 3px solid var(--blue);
+  padding: 18px 20px;
+  background: rgba(43,43,245,0.05);
+  color: rgba(43,43,245,0.75);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.card-recommendation { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 28px; color: var(--white); }
+.card-recommendation-num { font-family: 'Barlow', sans-serif; font-size: 0.9rem; font-weight: 900; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+.card-recommendation-title { font-family: 'Barlow', sans-serif; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.3; }
+.card-recommendation-desc { font-family: 'Inter', system-ui, sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+.analysis-series {
+  display: grid;
+  gap: 20px;
+}
+.research-item,
+.recommendation-item,
+.reflection-item,
+.insight-item,
+.problem-item {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.problem-grid, .research-grid, .insight-grid, .recommendation-grid, .reflection-grid, .framework-grid, .impact-grid { display: grid; gap: 20px; }
+.framework-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; }
+.problem-grid, .research-grid, .insight-grid, .recommendation-grid, .reflection-grid { grid-template-columns: 1fr; }
+
+.impact-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.impact-grid .impact-cell:last-child { grid-column: span 2; }
+@media (max-width: 768px) {
+  .impact-grid { grid-template-columns: 1fr; }
+  .impact-grid .impact-cell:last-child { grid-column: span 1; }
+}
+.impact-cell { padding: 32px 24px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 140px; background: var(--blue); border: none; color: var(--white); }
+.impact-num { font-family: 'Barlow', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--white); letter-spacing: -0.02em; line-height: 0.9; margin-bottom: 12px; }
+.impact-label { font-family: 'Inter', system-ui, sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.75); line-height: 1.5; margin-bottom: 6px; }
+.card-impact-sublabel { font-family: 'Inter', system-ui, sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.5); line-height: 1.4; }
+#recommendations .section-grid-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 1024px) { #recommendations .section-grid-3col { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { #recommendations .section-grid-3col { grid-template-columns: 1fr; } }
+
+.score-matrix { padding: 28px; }
+.score-matrix-title, .pipeline-title, .dt-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(43,43,245,0.6); margin-bottom: 18px; }
+.score-row, .dt-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.score-label { font-size: 0.8rem; color: rgba(43,43,245,0.7); width: 150px; flex-shrink: 0; }
+.score-track { flex: 1; height: 8px; background: var(--blue-muted); overflow: hidden; }
+.score-fill { height: 100%; background: var(--blue); }
+.score-num { font-size: 0.78rem; font-weight: 600; color: rgba(43,43,245,0.65); width: 36px; text-align: right; }
+.pipeline-track { display: flex; align-items: center; gap: 0; min-width: 560px; }
+.pipeline-step { flex: 1; padding: 14px 12px; background: var(--off-white); border: 1px solid var(--rule); border-radius: 0; font-size: 0.75rem; line-height: 1.4; text-align: center; color: rgba(43,43,245,0.7); position: relative; }
+.pipeline-step.active { background: var(--blue-muted); border-color: var(--blue); color: var(--blue); }
+.pipeline-step strong { display: block; font-size: 0.82rem; color: rgba(43,43,245,0.85); margin-bottom: 3px; }
+.pipeline-arrow { color: rgba(43,43,245,0.5); padding: 0 6px; font-size: 0.9rem; flex-shrink: 0; }
+.decision-tree { padding: 28px; }
+.dt-node { flex: 1; padding: 12px 14px; border: 1px solid var(--rule); background: var(--off-white); color: rgba(43,43,245,0.75); font-size: 0.8rem; line-height: 1.45; }
+.dt-node.invest { background: rgba(43,43,245,0.08); border-color: var(--blue); }
+.dt-node.pass { background: var(--off-white); }
+.dt-node strong { color: rgba(43,43,245,0.85); display: block; margin-bottom: 2px; font-size: 0.82rem; }
+.case-footer-nav { display: flex; align-items: center; justify-content: space-between; padding: 56px 0; border-top: 1px solid var(--rule); flex-wrap: wrap; gap: 16px; }
+.case-footer-nav a { display: inline-flex; align-items: center; gap: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; text-transform: uppercase; color: rgba(43,43,245,0.7); padding: 10px 18px; border: 1px solid var(--rule); border-radius: 0; background: var(--white); transition: background 0.2s, color 0.2s; }
+.case-footer-nav a:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.section-grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+@media (max-width: 768px) { .section-grid-2col { grid-template-columns: 1fr; gap: 32px; } }
+.section-grid-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 1024px) { .section-grid-3col { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .section-grid-3col { grid-template-columns: 1fr; } }
+.section-grid-4col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 1024px) { .section-grid-4col { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .section-grid-4col { grid-template-columns: 1fr; } }
+.blue-zone { background: var(--blue); color: var(--white); padding: 64px 0; margin-left: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
+.off-white-zone { background: var(--off-white); padding: 80px 0; margin-left: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
+.card-primary { background: var(--white); border: 1px solid var(--rule); border-radius: 0; padding: 18px 16px; transition: border-color 0.2s; }
+.card-primary:hover { border-color: var(--blue); }
+.card-insight { background: rgba(43,43,245,0.06); border: 1px solid var(--rule); border-radius: 0; padding: 20px 24px; transition: background 0.2s; }
+.card-insight:hover { background: rgba(43,43,245,0.10); }
+.blue-zone .card-insight { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
+.blue-zone .card-insight:hover { background: rgba(255,255,255,0.12); }
+.card-impact { background: var(--blue); border: none; border-radius: 0; padding: 32px 24px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 140px; }
+.card-impact-num { font-family: 'Barlow', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--white); letter-spacing: -0.02em; line-height: 0.9; margin-bottom: 12px; }
+.card-impact-label { font-family: 'Inter', system-ui, sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 6px; }
+.card-impact-sublabel { font-family: 'Inter', system-ui, sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.40); line-height: 1.4; }
+.card-recommendation { background: var(--white); border: 1px solid var(--rule); border-radius: 0; padding: 28px; transition: border-color 0.2s; }
+.card-recommendation:hover { border-color: var(--blue); }
+.card-recommendation-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); font-size: 0.8rem; margin-bottom: 14px; }
+.card-recommendation-title { font-family: 'Barlow', sans-serif; color: var(--blue); font-size: 1rem; line-height: 1.4; margin-bottom: 0; }
+.card-recommendation-desc { font-family: 'Inter', system-ui, sans-serif; color: rgba(43,43,245,0.75); font-size: 0.88rem; line-height: 1.75; margin-top: 12px; }
+.card-recommendation-button { display: inline-flex; margin-top: 20px; padding: 8px 16px; background: var(--blue); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.2s; }
+.card-recommendation-button:hover { background: var(--blue-dark); }
+#context { padding: 30px 0; }
+#problem { padding: 30px 0; }
+#research { padding: 30px 0; }
+#insights { padding: 30px 0; }
+#framework { padding: 30px 0; }
+#recommendations { padding: 30px 0; }
+#impact { padding: 30px 0; }
+#reflection { padding: 30px 0; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out); }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+@media (max-width: 800px) { .case-layout { grid-template-columns: 1fr; } .case-toc { display: none; } .impact-grid { grid-template-columns: 1fr; } .problem-grid, .research-grid, .insight-grid, .recommendation-grid, .reflection-grid, .framework-grid, .section-grid-2col, .section-grid-3col, .section-grid-4col { grid-template-columns: 1fr; } .fw-card, .dim-card, .init-card, .ba-card { width: 100%; } .wide { padding: 0 clamp(16px, 4vw, 32px); } }\n
+
+
+.case-title,.case-section-title,.case-text,.case-quote,.impact-grid,.framework-grid,.dim-grid,.initiative-grid,.pipeline,.score-matrix,.globe-banner,.churn-funnel{max-width:100%;overflow-wrap:anywhere;}
+.case-layout,.wide,.container{min-width:0;}
+.venn-svg-wrap svg,.pipeline-track{max-width:100%;overflow:hidden;}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">AN<span>.</span></a>
+  <a href="index.html#work" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<!-- CASE HERO -->
+<div class="case-hero">
+  <div class="container">
+    <div class="case-label">Case Study · Strategy & AI</div>
+    <h1 class="case-title">AI-Driven Subscriber Retention at Business Insider</h1>
+    <p class="case-sub">Diagnosed churn in a ~$15M digital subscription business disrupted by AI search — and turned findings into a strategic roadmap for the C-suite.</p>
+    <div class="case-meta-row">
+      <div class="case-meta-pill"><strong>Role:</strong> Technology Consultant (Internal)</div>
+      <div class="case-meta-pill"><strong>Duration:</strong> Jan – May 2026</div>
+      <div class="case-meta-pill"><strong>Segment:</strong> ~$12M at-risk revenue</div>
+      <div class="case-meta-pill"><strong>Audience:</strong> Rising Professionals</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="wide">
+  <div class="case-layout">
+
+    <!-- TOC -->
+    <aside class="case-toc">
+      <div class="toc-title">Contents</div>
+      <div class="toc-links">
+        <a href="#context" class="toc-link">Context</a>
+        <a href="#problem" class="toc-link">Problem</a>
+        <a href="#research" class="toc-link">Research</a>
+        <a href="#insights" class="toc-link">Key Insights</a>
+        <a href="#framework" class="toc-link">Decision Framework</a>
+        <a href="#recommendations" class="toc-link">Recommendations</a>
+        <a href="#impact" class="toc-link">Impact</a>
+        <a href="#reflection" class="toc-link">Reflection</a>
+      </div>
+    </aside>
+
+    <!-- BODY -->
+    <article class="case-body">
+
+      <div class="case-section reveal" id="context">
+        <h2 class="case-section-title">Context</h2>
+        <p class="case-text">Business Insider is a premium digital media company with a subscription product called BI Prime — targeting ambitious early-career professionals (the "Rising Professionals" segment) who rely on the platform for industry intelligence, career signals, and business news.</p>
+        <p class="case-text">By early 2026, this segment accounted for a significant share of the company's ~$15M subscription revenue base. The problem: subscription renewals were softening. Not dramatically — but enough to raise a serious question about whether the value proposition was holding up in an era of AI-powered search.</p>
+        <div class="case-quote">
+          "The question wasn't whether AI was disrupting content discovery. It clearly was. The question was: which specific behaviors were changing, which revenue was at risk, and what, if anything, could be done about it before it compounded."
+        </div>
+      </div>
+
+      <div class="case-section reveal" id="problem">
+        <h2 class="case-section-title">The Problem</h2>
+        <p class="case-text">The surface-level problem was subscriber churn. But churn is an output — not a cause. Three underlying questions needed answering:</p>
+        <div class="analysis-series">
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">01</div>
+              <h3 class="analysis-step-title">Supply-side content relevance</h3>
+            </div>
+            <p class="analysis-step-text">Was the content itself losing relevance? Were editorial strategies misaligned with what this audience now needed?</p>
+            <div class="analysis-step-callout"><strong>Why it matters:</strong> editorial misalignment can erode BI Prime’s premium value before churn is visible.</div>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">02</div>
+              <h3 class="analysis-step-title">Distribution disruption from AI search</h3>
+            </div>
+            <p class="analysis-step-text">Was AI search (Google AI Overviews, Perplexity, ChatGPT) absorbing traffic that once converted into subscribers?</p>
+            <div class="analysis-step-callout"><strong>Why it matters:</strong> the discovery funnel is where subscriber acquisition is won or lost.</div>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">03</div>
+              <h3 class="analysis-step-title">Product value against free AI alternatives</h3>
+            </div>
+            <p class="analysis-step-text">Did the subscription product still create enough exclusive value to justify cost against freely available AI-synthesized content?</p>
+            <div class="analysis-step-callout"><strong>Why it matters:</strong> unclear product value accelerates churn in a market flooded with free AI summaries.</div>
+          </article>
+        </div>
+        <p class="case-text">The additional constraint: the business was simultaneously evaluating whether and how to adopt AI internally — across editorial, product, and distribution. There was no clarity yet on what "AI-enabled Business Insider" should look like. My work had to address both the external threat and the internal opportunity simultaneously.</p>
+
+        <div class="churn-funnel">
+          <div class="funnel-label">Churn Driver Decomposition</div>
+          <div class="funnel-step">
+            <div class="funnel-step-label">Discovery disruption</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:88%">AI search captures intent</div></div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-step-label">Value substitution</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:72%;opacity:0.7">Free AI summarization</div></div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-step-label">Content misalignment</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:55%;opacity:0.6">Editorial gaps</div></div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-step-label">Product-value gap</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:40%;opacity:0.5">Subscription ROI unclear</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-section reveal" id="research">
+        <h2 class="case-section-title">Research Approach</h2>
+        <p class="case-text">I structured the research across three parallel workstreams to avoid the common mistake of treating a multi-dimensional problem as a single-track investigation:</p>
+
+        <div class="research-grid">
+          <div class="research-item">
+            <div class="research-item-header">
+              <div class="research-item-num">01</div>
+              <h3 class="research-item-title">Audience behavior analysis</h3>
+            </div>
+            <p class="research-item-desc">Analyzed content consumption patterns in the Rising Professionals segment — session frequency, content types, funnel exits, and renewal timing.</p>
+          </div>
+          <div class="research-item">
+            <div class="research-item-header">
+              <div class="research-item-num">02</div>
+              <h3 class="research-item-title">Competitive benchmarking</h3>
+            </div>
+            <p class="research-item-desc">Mapped how peers (The Information, Bloomberg, Morning Brew) were responding to AI disruption — positioning, pricing, and content strategies.</p>
+          </div>
+          <div class="research-item">
+            <div class="research-item-header">
+              <div class="research-item-num">03</div>
+              <h3 class="research-item-title">AI readiness assessment</h3>
+            </div>
+            <p class="research-item-desc">Evaluated internal AI readiness across editorial, product, and engineering — identifying gaps, quick wins, and strategic investment priorities.</p>
+          </div>
+          <div class="research-item">
+            <div class="research-item-header">
+              <div class="research-item-num">04</div>
+              <h3 class="research-item-title">Distribution analysis</h3>
+            </div>
+            <p class="research-item-desc">Assessed how AI-powered search was affecting organic traffic, referral patterns, and top-of-funnel subscriber acquisition across 5 business units.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-section reveal" id="insights">
+        <h2 class="case-section-title">Key Insights</h2>
+        <p class="case-text">Three non-obvious findings emerged from the research that reframed the problem:</p>
+        <div class="analysis-series">
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">01</div>
+              <h3 class="analysis-step-title">AI is replacing discovery, not content</h3>
+            </div>
+            <p class="analysis-step-text">AI search tools were answering “quick intelligence” queries that previously brought users into the BI funnel. Users who would have clicked through, explored multiple articles, and encountered a paywall were now getting surface-level answers from Perplexity or Google AI Overviews — and never arriving.</p>
+            <div class="analysis-step-callout"><strong>Strategic implication:</strong> defending the discovery journey is more valuable than optimizing content volume alone.</div>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">02</div>
+              <h3 class="analysis-step-title">Subscriber identity and signal are retention assets</h3>
+            </div>
+            <p class="analysis-step-text">Qualitative signals suggested that early-career professionals valued BI not just for information but for the social signal of being a subscriber — a “professional identity” dimension that AI tools could not substitute.</p>
+            <div class="analysis-step-callout"><strong>Strategic implication:</strong> retention should lean into community and professional signal, not just content.</div>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">03</div>
+              <h3 class="analysis-step-title">AI adoption must be tiered by risk and return</h3>
+            </div>
+            <p class="analysis-step-text">Internal AI adoption was being evaluated as a monolithic initiative — but it needed to be split into transformative vs. incremental opportunities with different risk-return profiles.</p>
+            <div class="analysis-step-callout"><strong>Strategic implication:</strong> separate transformative use cases from incremental ones to avoid one-size-fits-all AI planning.</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="case-section reveal" id="framework">
+        <h2 class="case-section-title">Decision Framework</h2>
+        <p class="case-text">To make the AI opportunity evaluation actionable, I built a 2×2 decision framework distinguishing between <strong>transformative</strong> and <strong>incremental</strong> AI use cases, mapped against implementation complexity:</p>
+
+        <div class="framework-grid">
+          <div class="fw-card" style="border-color:rgba(232,93,4,0.25)">
+            <div class="fw-card-num" style="color:#52a052">Quick Wins</div>
+            <div class="fw-card-title">Low Complexity / High Impact</div>
+            <div class="fw-card-desc">AI-assisted editorial summarization, personalized newsletter curation, AI-enhanced search UX within the product.</div>
+          </div>
+          <div class="fw-card" style="border-color:rgba(232,93,4,0.25)">
+            <div class="fw-card-num">Strategic Bets</div>
+            <div class="fw-card-title">High Complexity / High Impact</div>
+            <div class="fw-card-desc">AI-native content formats, exclusive data intelligence products, subscriber-only AI tools that create a moat vs. free AI alternatives.</div>
+          </div>
+          <div class="fw-card">
+            <div class="fw-card-num" style="color:var(--text-4)">Defer</div>
+            <div class="fw-card-title">Low Complexity / Low Impact</div>
+            <div class="fw-card-desc">Cosmetic AI features that don't address the core value proposition gap or churn drivers.</div>
+          </div>
+          <div class="fw-card">
+            <div class="fw-card-num" style="color:#e09c3a">Evaluate</div>
+            <div class="fw-card-title">High Complexity / Low Impact</div>
+            <div class="fw-card-desc">Full editorial automation — high investment, unclear ROI, brand risk if quality degrades.</div>
+          </div>
+        </div>
+
+        <p class="case-text">This framework was designed to give the CCO a concrete basis for sequencing AI investments rather than debating AI in the abstract.</p>
+      </div>
+
+      <div class="case-section reveal" id="recommendations">
+        <h2 class="case-section-title">Recommendations</h2>
+        <p class="case-text">Five strategic recommendations were delivered to the Chief Content Officer:</p>
+        <div class="analysis-series">
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">01</div>
+              <h3 class="analysis-step-title">Reposition the paywall around exclusivity, not volume</h3>
+            </div>
+            <p class="analysis-step-text">Gate high-signal, forward-looking analysis — not recaps of news AI can summarize. Make the subscriber value unmistakably exclusive.</p>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">02</div>
+              <h3 class="analysis-step-title">Invest in subscriber identity and community signals</h3>
+            </div>
+            <p class="analysis-step-text">Introduce professional community features (peer benchmarking, career intelligence) that create a sticky social layer AI tools cannot replicate.</p>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">03</div>
+              <h3 class="analysis-step-title">Build an editorial velocity advantage</h3>
+            </div>
+            <p class="analysis-step-text">Double down on breaking context-setting analysis (the "so what" layer) in the first 24 hours of major news — before AI distillation catches up.</p>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">04</div>
+              <h3 class="analysis-step-title">Implement an AI GTM readiness roadmap</h3>
+            </div>
+            <p class="analysis-step-text">Sequence quick wins first, while building toward subscriber-only AI tools as a long-term moat.</p>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">05</div>
+              <h3 class="analysis-step-title">Define AI-specific KPIs and SLOs</h3>
+            </div>
+            <p class="analysis-step-text">Track performance across editorial, product, and distribution at the initiative level — not vanity metrics.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="case-section reveal" id="impact">
+        <h2 class="case-section-title">Impact</h2>
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="card-impact-num">Saves</div>
+            <div class="card-impact-label">$42M estimated annual revenue exposure for the segment</div>
+          </div>
+          <div class="impact-cell">
+            <div class="card-impact-num">Reduces</div>
+            <div class="card-impact-label">~$120M total opportunity under the AI-led retention strategy</div>
+          </div>
+          <div class="impact-cell">
+            <div class="card-impact-num">Creates</div>
+            <div class="card-impact-label">C-suite stakeholder engagement for recommendation approval</div>
+          </div>
+          <div class="impact-cell">
+            <div class="card-impact-num">5</div>
+            <div class="card-impact-label">Business units covered in the assessment</div>
+          </div>
+          <div class="impact-cell">
+            <div class="card-impact-num">6</div>
+            <div class="card-impact-label">Revenue branches modeled in the strategic analysis</div>
+          </div>
+        </div>
+        <p class="case-text">Recommendations were delivered directly to the Chief Content Officer and shaped the editorial and product strategy roadmap for the "Rising Professionals" segment. The AI readiness framework was adopted as the evaluation lens for incoming AI platform decisions.</p>
+      </div>
+
+      <div class="case-section reveal" id="reflection">
+        <h2 class="case-section-title">Reflection</h2>
+        <div class="analysis-series">
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">01</div>
+              <h3 class="analysis-step-title">Acquire subscriber-level data earlier</h3>
+            </div>
+            <p class="analysis-step-text">I’d push harder for subscriber-level data access earlier in the engagement — behavioral cohort analysis would have added quantitative precision to the churn narrative.</p>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">02</div>
+              <h3 class="analysis-step-title">Make build vs. buy decisions more explicit</h3>
+            </div>
+            <p class="analysis-step-text">The AI readiness assessment could have been more prescriptive about build vs. buy vs. partner decisions for each use case — the CCO asked follow-up questions that a more detailed framework would have pre-answered.</p>
+          </article>
+          <article class="analysis-step">
+            <div class="analysis-step-header">
+              <div class="analysis-step-number">03</div>
+              <h3 class="analysis-step-title">Model moat defense and creation separately</h3>
+            </div>
+            <p class="analysis-step-text">I would have modeled a “defend the moat” scenario and a “build a new moat” scenario separately, with explicit cost estimates — to make the investment tradeoff more tangible for leadership.</p>
+          </article>
+        </div>
+        <p class="case-text" style="margin-top:20px">The most important lesson: in ambiguous consulting environments, <em>the quality of the framework matters as much as the quality of the recommendation.</em> A strong framework gives the client agency to extend the thinking on their own — a strong recommendation without a framework creates dependency.</p>
+      </div>
+
+      <div class="case-footer-nav">
+        <a href="index.html#work">← Back to all work</a>
+        <a href="case-study-efl.html">Next: AI Startup Evaluation →</a>
+      </div>
+
+    </article>
+  </div>
+</div>
+
+<script>
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+reveals.forEach(el => obs.observe(el));
+
+// TOC active state
+const tocLinks = document.querySelectorAll('.toc-link');
+const sectionEls = document.querySelectorAll('.case-section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sectionEls.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  tocLinks.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + current); });
+}, { passive: true });
+</script>
+</body>
+</html>
